@@ -18,6 +18,15 @@
         <org.mapstruct.version>1.3.0.Final</org.mapstruct.version>
     </properties>
     <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <activatedProperties>dev</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
     </profiles>
     <dependencies>
           <dependency>
