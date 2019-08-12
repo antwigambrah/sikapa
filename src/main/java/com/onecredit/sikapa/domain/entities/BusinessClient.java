@@ -1,6 +1,5 @@
 package com.onecredit.sikapa.domain.entities;
 
-import com.onecredit.sikapa.domain.services.BusinessClientService;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,7 +7,6 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -54,4 +52,3 @@ public class BusinessClient {
 
     }
 }
-

@@ -1,7 +1,6 @@
 package com.onecredit.sikapa.integration;
 
 import com.onecredit.sikapa.api.PersonalClientController;
-import com.onecredit.sikapa.domain.dto.PersonalClientMapper;
 import com.onecredit.sikapa.domain.entities.Client;
 import com.onecredit.sikapa.domain.entities.PersonalClient;
 import com.onecredit.sikapa.domain.repositories.PersonalClientRepository;
@@ -11,23 +10,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Date;
-import java.util.Map;
-
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @RunWith(SpringRunner.class)
@@ -47,9 +40,6 @@ public class PersonalClientControllerTests {
 
     @InjectMocks
     private PersonalClientController personalClientController;
-
-    @Autowired
-    private PersonalClientMapper clientMapper;
 
     @Before
     public void setup()throws  Exception{

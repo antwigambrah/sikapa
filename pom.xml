@@ -11,28 +11,16 @@
     <groupId>com.onecredit</groupId>
     <artifactId>sikapa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sikapa</name>
-    <description>Demo project for Spring Boot</description>
-
-    <profiles>
-        <profile>
-            <id>prod</id>
-            <properties>
-                <activatedProperties>prod</activatedProperties>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-    </profiles>
-
+    <name>app</name>
+    <description>Demo project for Spring Boot Rest Api</description>
     <properties>
         <java.version>1.8</java.version>
         <org.mapstruct.version>1.3.0.Final</org.mapstruct.version>
     </properties>
-
+    <profiles>
+    </profiles>
     <dependencies>
-        <dependency>
+          <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
@@ -138,7 +126,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
         </plugins>
-
     </build>
 
 </project>

@@ -9,10 +9,7 @@ import com.onecredit.sikapa.domain.repositories.UserRepository;
 import com.onecredit.sikapa.domain.services.UserService;
 
 import static junit.framework.TestCase.assertEquals;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,18 +1,13 @@
 package com.onecredit.sikapa.domain.services;
 
-import com.onecredit.sikapa.config.UserPrincipal;
-import com.onecredit.sikapa.config.UserPrincipalDetailsService;
 import com.onecredit.sikapa.domain.dto.PersonalClientDTO;
 import com.onecredit.sikapa.domain.dto.PersonalClientMapper;
-import com.onecredit.sikapa.domain.entities.Client;
 import com.onecredit.sikapa.domain.entities.PersonalClient;
 import com.onecredit.sikapa.domain.entities.User;
 import com.onecredit.sikapa.domain.repositories.PersonalClientRepository;
 
 import com.onecredit.sikapa.domain.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,9 +15,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional

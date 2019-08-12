@@ -4,14 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.onecredit.sikapa.domain.dto.UserDTO;
-import com.onecredit.sikapa.domain.entities.User;
 import com.onecredit.sikapa.domain.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -21,7 +19,6 @@ public class UserController {
 
 
     private final UserService userService;
-    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public UserController(UserService userService) {

@@ -1,7 +1,6 @@
 package com.onecredit.sikapa.integration;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.onecredit.sikapa.api.UserController;
 import com.onecredit.sikapa.domain.dto.UserDTO;
 import com.onecredit.sikapa.domain.dto.UserMapper;

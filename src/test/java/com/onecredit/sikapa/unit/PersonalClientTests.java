@@ -1,7 +1,5 @@
 package com.onecredit.sikapa.unit;
 
-import com.onecredit.sikapa.config.UserPrincipal;
-import com.onecredit.sikapa.domain.dto.PersonalClientDTO;
 import com.onecredit.sikapa.domain.dto.PersonalClientMapper;
 import com.onecredit.sikapa.domain.entities.Client;
 import com.onecredit.sikapa.domain.entities.PersonalClient;
@@ -14,13 +12,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-
 import java.util.Date;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -39,10 +32,6 @@ public class PersonalClientTests {
     private PersonalClientMapper clientMapper;
 
     private PersonalClient personalClient;
-
-    private List<PersonalClient>clients;
-
-    private List<PersonalClientDTO>clientDTOS;
 
     private Client client;
 
@@ -69,17 +58,4 @@ public class PersonalClientTests {
         PersonalClient clientData=clientService.findClientById(1L);
         assertEquals(clientData.getGender(),PersonalClient.Gender.MALE);
     }
- @Test
-    public void personal_client_marital_status_returns_string(){
-        given(clientRepository.findById(1L)).willReturn(java.util.Optional.of(personalClient));
-        PersonalClient clientData=clientService.findClientById(1L);
-        assertEquals(personalClient.getMaritalStatus(),PersonalClient.MaritalStaus.SINGLE);
-    }
-
-
-//    @Test
-//    public void all_personal_clients_should_return_as_a_DTO(){
-//        given(clientRepository.findAll()).willReturn(clients);
-//        given(clientService.all()).willReturn(clientDTOS);
-//    }
 }
