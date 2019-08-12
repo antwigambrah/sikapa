@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}"/>
+</head>
+<body>
+<div th:replace="fragments/nav :: nav">
+</div>
+<div class="container main" id="app">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <div class="row">
+                <div class="col-12">
+                    <h4 style="font-weight: bold">Admin Settings</h4>
+                </div>
+                <div class="col-12">
+                    <div class="list-group list-group-horizontal-xl shadow-sm profile-list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#profile" role="tab" aria-controls="home">Profile</a>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#user" role="tab" aria-controls="profile" >Users</a>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')"  class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#branch" role="tab" aria-controls="settings">Branch</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tab-content profile-tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile">
+                            <profile></profile>
+                        </div>
+                        <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+                            <user></user>
+                        </div>
+                        <div class="tab-pane fade" id="branch" role="tabpanel" aria-labelledby="branch-tab">
+                            <branch></branch>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/app.js}">
+</script>
+
+</body>
+</html>

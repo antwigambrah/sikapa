@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<style>
+    body{
+        background-color: #f8f9fa;;
+    }
+    .card{
+        margin-top: 150px;
+        border-color:transparent;
+    }
+    .btn-primary{
+        background: linear-gradient(#4daded, #1f97e9);
+    }
+</style>
+<body>
+<div class="container main" id="app">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form name="f" th:action="@{/login}" method="post">
+                            <fieldset>
+                                <div th:if="${param.error}" class="alert alert-error" role="alert">
+                                    Invalid username and password.
+                                </div>
+                                <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                                    You have been logged out.
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="username" name="username" class="form-control" placeholder="Username"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" id="password" name="password" class="form-control" placeholder="Password"/>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

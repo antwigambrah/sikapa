@@ -1,0 +1,80 @@
+body {
+background-color: #f8f9fa;
+
+}
+.btn-primary{
+  background: linear-gradient(#4daded, #1f97e9);
+}
+.btn{
+  font-weight: bold;
+}
+.li-icon{
+  margin-right: 3px;
+}
+.li-icon-enter{
+  margin-left: 5px;
+}
+.card{
+  border-color:transparent;
+  .table-card-body{
+    padding: 0 !important;
+  }
+}
+.card-row{
+  margin-bottom: 10px;
+}
+.list-group{
+  border-color: transparent;
+}
+.main{
+  margin-top: 50px;
+}
+/* NAV BAR */
+.navbar{
+
+  .navbar-nav{
+    margin-left: 10px;
+    .nav-item{
+      padding-right: 10px;
+      font-weight: bold;
+      .nav-link{
+        color: #1b1e21;
+      }
+    }
+  }
+}
+
+/* AUTH */
+.auth-card{
+  margin-top: 150px;
+}
+
+.modal-content{
+  margin-top: 10px !important;
+}
+
+.profile-list-group{
+  border-color:transparent;
+  .active {
+    color: #fff;
+    background-color: #28a745 !important;
+  }
+  .list-group-item{
+    border-color: #f8f9fa;
+  }
+}
+
+.profile-tab-content{
+  margin-top: 20px;
+}
+
+
+/* TABLE */
+.table th, .table td {
+  border-top: 1px solid #f8f9fa !important;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 1px solid #dee2e6 !important;
+}
