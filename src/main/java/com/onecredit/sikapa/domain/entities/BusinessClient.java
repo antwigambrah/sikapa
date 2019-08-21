@@ -3,6 +3,7 @@ package com.onecredit.sikapa.domain.entities;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -15,7 +16,11 @@ import java.util.Date;
 @Setter
 public class BusinessClient {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO,  generator="native")
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
     @Column(nullable = false)
     private Long id;
     @Column(nullable = false)
@@ -35,8 +40,10 @@ public class BusinessClient {
     @Embedded
     private Client personal;
     @CreationTimestamp
+    @Column(nullable = false)
     private Date createdAt;
     @UpdateTimestamp
+    @Column(nullable = false)
     private Date updatedAt;
 
     public BusinessClient(String businessName, String businessType, String businessSector, String businessProducts, Date dateOfIncorporation, User user, Client personal) {

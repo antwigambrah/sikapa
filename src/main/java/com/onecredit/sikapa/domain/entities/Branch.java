@@ -7,6 +7,7 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
@@ -18,7 +19,12 @@ public class Branch {
     @Column(nullable = false)
 //    @GeneratedValue(generator = "branch_id_seq", strategy = GenerationType.SEQUENCE)
 //    @SequenceGenerator(name = "branch_id_seq", sequenceName = "branch_id_seq", allocationSize = 50)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @GeneratedValue(strategy = GenerationType.AUTO,  generator="native")
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
     private Long id;
     @Column(nullable = false,unique = true)
     private String area;
@@ -29,10 +35,16 @@ public class Branch {
 
     private List<User> users = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+
+    private List<IndividualClient> clients=new ArrayList<>();
+
     @CreationTimestamp
+    @Column(nullable = false)
     private Date createdAt;
 
     @UpdateTimestamp
+    @Column(nullable = false)
     private Date updatedAt;
 
     public Branch() {

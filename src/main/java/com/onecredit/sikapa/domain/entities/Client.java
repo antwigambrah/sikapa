@@ -22,9 +22,10 @@ public class Client {
     private int tenancyDuration;
     private String accountNumber;
     private String gpsAddress;
+    private String idNumber;
 
 
-    public Client(String phoneNumber, String email, int numberOfDependants, String houseNumber, String town, String postalAddress, String nearestLandmark, String gpsAddress, String tenancyType, int tenancyDuration, String accountNumber) {
+    public Client(String phoneNumber, String email, int numberOfDependants, String houseNumber, String town, String postalAddress, String nearestLandmark, String gpsAddress, String tenancyType, int tenancyDuration, String accountNumber,String idNumber) {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.numberOfDependants = numberOfDependants;
@@ -36,6 +37,7 @@ public class Client {
         this.tenancyType = tenancyType;
         this.tenancyDuration = tenancyDuration;
         this.accountNumber = accountNumber;
+        this.idNumber=idNumber;
     }
     public Client(){
 

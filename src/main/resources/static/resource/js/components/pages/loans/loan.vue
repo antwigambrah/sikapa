@@ -1,24 +1,31 @@
 <template>
-    <div class="card shadow-sm">
-        <div class="card-header">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center ">
-                <input class="form-control form-control-sm col-6 shadow-sm" placeholder="Search Loans">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
+    <div>
+            <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center ">
+                        <input class="form-control form-control-sm col-6 shadow-sm" placeholder="Search Loans">
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <div class="dropdown">
+                                <button class="btn btn-primary btn-blockdropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Create
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="New Application">
+                                    <a class="dropdown-item" href="/loans?type=individual">Individual</a>
+                                    <a class="dropdown-item" href="/loans?type=corporate">SME/Business</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="card-body">
 
-                    <b-dropdown id="dropdown-1" text="new application" class="m-md-2" right variant="success">
-                        <b-dropdown-item href="/loans?type=individual">Individual</b-dropdown-item>
-                        <b-dropdown-item href="/loans?type=corporate">SME/Corporate</b-dropdown-item>
-                    </b-dropdown>
+
                 </div>
             </div>
         </div>
-        <div class="card-body">
-
-
-        </div>
+    </div>
     </div>
 </template>
 
@@ -31,7 +38,7 @@
             return {
                 show: false,
             }
-        }
+        },
     }
 </script>
 

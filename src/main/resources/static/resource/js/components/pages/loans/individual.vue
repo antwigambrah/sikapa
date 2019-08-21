@@ -1,28 +1,68 @@
 <template>
-    <div>
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <b-tabs content-class="mt-3" fill>
-                    <b-tab title="Loan Details" active><p>Applicant Details</p></b-tab>
-                    <b-tab title="Guarantors"><p>Guarantors</p></b-tab>
-                    <b-tab title="Collaterals"><p>Collaterals</p></b-tab>
-                    <b-tab title="Fees"><p>Fees</p></b-tab>
-                    <b-tab title="Recommendations"><p>Recommendations</p></b-tab>
-                    <b-tab title="Approvals"><p>Approvals</p></b-tab>
-                </b-tabs>
+<div>
+    <div class="row last-row">
+        <div class="col-md-10 offset-md-1">
+            <div class="row step-row">
+                <div class="col-auto mr-auto"></div>
+                <div class="col-auto">
+                    <button class="btn btn-primary btn-block" @click.prevent="saveLoan()" v-if="nextTick===0">Save <i class="lni-arrow-right"></i></button>
+                    <button class="btn btn-primary btn-block" @click="next" v-else> Next <i class="lni-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="card shadow-sm">
+                          <div class="card-body">
+                              <component v-bind:is="viewComponent"></component>
+                          </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
+import Guarantor from "./guarantor"
+import LoanDetails from "./load-details"
+import Collateral from "./collateral"
     export default {
-        name: "individual"
+        name: "individual",
+        components:{
+
+        },
+        data(){
+            return {
+                nextTick:1,
+                isLoanDetails:true,
+                isGuarantor:false,
+                isCollateral:false,
+                isComments:false
+            }
+        },
+        computed:{
+            viewComponent(){
+                if (this.nextTick===1){
+                    return LoanDetails;
+                } else if(this.nextTick===2){
+                    return Collateral
+                } else if (this.nextTick===3) {
+                    this.nextTick=0;
+                    return Guarantor;
+
+                }
+            },
+        },
+        methods:{
+            next(){
+                this.nextTick++;
+            },
+            saveLoan(){}
+
+        }
     }
 </script>
 
 <style scoped lang="scss">
-.card-body{
+.step-row{
+    margin-bottom:10px;
 
 }
 </style>

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://cdn.lineicons.com/1.0.1/LineIcons.min.css);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Roboto);@import url(https://cdn.lineicons.com/1.0.1/LineIcons.min.css);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -12199,6 +12199,11 @@ input[type=color].form-control:disabled {
 
 body {
   background-color: #f8f9fa;
+  font-family: "Roboto ", monospace;
+}
+
+h4 {
+  font-weight: bold;
 }
 
 .btn-primary {
@@ -12208,6 +12213,7 @@ body {
 
 .btn {
   font-weight: bold;
+  border-radius: 4px;
 }
 
 .li-icon {
@@ -12220,6 +12226,11 @@ body {
 
 .card {
   border-color: transparent;
+}
+
+.card .card-header {
+  background-color: transparent;
+  padding: 5px 20px 5px 20px;
 }
 
 .card .table-card-body {
@@ -12290,5 +12301,37 @@ body {
 .table thead th {
   vertical-align: bottom;
   border-bottom: 1px solid #dee2e6 !important;
+}
+
+.form-control {
+  background: #f8f9fa;
+}
+
+.custom-select {
+  background: #f8f9fa;
+}
+
+.custom-select:focus {
+  box-shadow: none;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #1D252D;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.last-row {
+  margin-bottom: 50px;
+}
+
+.profile-list-group .active {
+  color: #fff;
+  color: #fff;
+  background-color: #007bff !important;
+  border-color: #007bff !important;
 }
 

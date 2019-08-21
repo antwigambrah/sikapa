@@ -1,6 +1,7 @@
 package com.onecredit.sikapa.unit;
 
 
+import com.onecredit.sikapa.domain.dto.UserDTO;
 import com.onecredit.sikapa.domain.dto.UserMapper;
 import com.onecredit.sikapa.domain.entities.Branch;
 import com.onecredit.sikapa.domain.entities.User;
@@ -16,6 +17,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserTests {
@@ -32,11 +34,13 @@ public class UserTests {
     @InjectMocks
     private UserService userService;
 
+    private PasswordEncoder encoder;
+
 
     @Before
     public  void setUp(){
 
-        userService=new UserService(userRepository,branchRepository,userMapper);
+        userService=new UserService(userRepository, branchRepository, userMapper,encoder);
 
     }
 
@@ -48,7 +52,7 @@ public class UserTests {
         Branch branch=new Branch("suame","ashanti");
         user.setBranch(branch);
         given(userRepository.findById(1L)).willReturn(java.util.Optional.of(user));
-             User userData =userService.findUserById(1L);
+             UserDTO userData =userService.findUserById(1L);
           assertEquals(userData.getUsername(),"AGambrah");
     }
 
@@ -60,7 +64,7 @@ public class UserTests {
         Branch branch=new Branch("suame","ashanti");
         user.setBranch(branch);
         given(userRepository.findById(1L)).willReturn(java.util.Optional.of(user));
-        User userData =userService.findUserById(1L);
+        UserDTO userData =userService.findUserById(1L);
         assertEquals(userData.getStatus(), User.AccountStatus.ACTIVE);
     }
 }

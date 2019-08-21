@@ -1,12 +1,18 @@
 body {
 background-color: #f8f9fa;
+font-family: 'Roboto ', monospace;
 
+}
+h4{
+  font-weight: bold;
 }
 .btn-primary{
   background: linear-gradient(#4daded, #1f97e9);
 }
+
 .btn{
   font-weight: bold;
+  border-radius:4px;
 }
 .li-icon{
   margin-right: 3px;
@@ -16,6 +22,10 @@ background-color: #f8f9fa;
 }
 .card{
   border-color:transparent;
+  .card-header{
+    background-color: transparent;
+    padding: 5px 20px 5px 20px;
+  }
   .table-card-body{
     padding: 0 !important;
   }
@@ -77,4 +87,35 @@ background-color: #f8f9fa;
 .table thead th {
   vertical-align: bottom;
   border-bottom: 1px solid #dee2e6 !important;
+}
+
+.form-control{
+  background:  #f8f9fa;
+}
+.custom-select{
+  background:  #f8f9fa;
+    &:focus{
+      box-shadow: none;
+    }
+}
+.form-label{
+  font-weight:bold;
+  color:#1D252D;
+}
+
+.form-control{
+  &:focus{
+    box-shadow: none;
+  }
+}
+
+.last-row{
+  margin-bottom: 50px;
+}
+
+.profile-list-group .active {
+  color: #fff;
+  color: #fff;
+  background-color: #007bff !important;
+  border-color: #007bff !important;
 }

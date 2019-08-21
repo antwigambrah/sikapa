@@ -30,8 +30,7 @@ public class HttpSecurityConfig extends WebSecurityConfigurerAdapter {
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
 
-            http
-                    .csrf().disable()
+            http.cors().and().csrf().disable()
                     .antMatcher("/api/**")
                     .authorizeRequests().anyRequest().authenticated()
                     .and()
@@ -45,9 +44,11 @@ public class HttpSecurityConfig extends WebSecurityConfigurerAdapter {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
+
+
             http.cors().and().csrf().disable().authorizeRequests().antMatchers("/resources/**").permitAll()
                     .antMatchers("/settings").hasAnyRole("ADMIN,USER").anyRequest().authenticated().and().formLogin()
-                    .loginPage("/login").permitAll().and().logout().permitAll();
+                    .loginPage("/login").permitAll().defaultSuccessUrl("/",true).and().logout().permitAll();
         }
     }
 

@@ -11,7 +11,6 @@
                     </div>
                 </div>
             </li>
-
             <li class="list-group-item">
                 <div class="row justify-content-between">
                     <div class="col-4 title">
@@ -27,7 +26,7 @@
         <div class="row edit-row">
             <div class="col-auto mr-auto">
 
-                <b-modal title="Edit User" v-model="modalShow">
+                <b-modal title="Edit User" v-model="modalShow" :hide-header-close="false">
                     <form>
                         <div class="form-group">
                             <input v-model="user.username" type="text" class="form-control" id="username"  placeholder="Username" >
@@ -35,24 +34,17 @@
                         <div class="form-group">
                         </div>
                         <div class="form-group">
-                            <input v-model="user.password" type="text" class="form-control" id="password"  placeholder="******************">
+                            <input v-model="user.password" type="password" class="form-control" id="password"  placeholder="******************">
                         </div>
 
                     </form>
                     <div slot="modal-footer" class="w-100">
-                        <b-button
-                                variant="success"
-                                size="sm"
-                                class="float-right"
-                                @click="createUser()"
-                        >
-                            update
-                        </b-button>
+                        <button class="btn btn-block btn-success float-right" @click="updateUser()">Update</button>
                     </div>
                 </b-modal>
             </div>
             <div class="col-auto">
-                <button class="btn btn-success btn-sm" @click="modalShow = true">Edit User</button>
+                <button class="btn btn-success btn-block" @click="modalShow = true">Edit User</button>
             </div>
         </div>
 
@@ -60,19 +52,51 @@
 </template>
 
 <script>
+    import {getResource,updateResource} from "../../../utils/resource"
     export default {
         name: "profile",
-        mounted() {
-            axios.get('/user').then((res)=>{
-                this.user.username=res.data.username;
-            })
+      async mounted() {
+            this.getUser();
         },
         data(){
             return {
+                hideHeaderClose:false,
                 modalShow: false,
                 user:{
+                    id:1,
                     username:"",
                     password:""
+                }
+            }
+        },
+        methods:{
+           async  updateUser(){
+               console.log(this.user);
+                const[ex,res]=await updateResource("/auth/user/"+this.user.id,this.user);
+               if (ex){
+                   console.log(ex)
+               }else {
+                   this.modalShow=false;
+                   this.getUser();
+                   this.$bvToast.toast('user updated', {
+                       variant: "success",
+                       solid: true,
+                       toaster:"b-toaster-bottom-left",
+                       autoHideDelay:500,
+                       noCloseButton:true
+                   });
+
+               }
+            },
+            async getUser(){
+                const [ex,res]=await getResource("/auth/user");
+                if(ex){
+                    console.log(ex)
+                }else{
+                    console.log(res);
+
+                    this.user.username=res.data.username;
+                    this.user.id=res.data.id;
                 }
             }
         }

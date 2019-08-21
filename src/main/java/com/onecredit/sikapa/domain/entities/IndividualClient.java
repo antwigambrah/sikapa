@@ -1,21 +1,28 @@
 package com.onecredit.sikapa.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name = "personal_client")
 @Getter
 @Setter
-public class PersonalClient {
+public class IndividualClient {
 
-    public enum MaritalStaus {
+    public enum MaritalStatus {
         SINGLE,
         MARRIED,
         DIVORCED
@@ -27,7 +34,11 @@ public class PersonalClient {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO,  generator="native")
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
     @Column(nullable = false)
     private Long id;
     @Column(nullable = false)
@@ -41,10 +52,11 @@ public class PersonalClient {
     private Gender gender;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private MaritalStaus maritalStatus;
-
-    @Type(type = "date")
-    private Date dateOfBirth;
+    private MaritalStatus maritalStatus;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate dateOfBirth;
     @Column(nullable = false)
     private String placeOfBirth;
     @Column(nullable = false)
@@ -60,33 +72,39 @@ public class PersonalClient {
     private User user;
 
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Branch branch;
+
+
     @Column(nullable = false)
     @Embedded
-    private Client personal;
+    private Client individual;
 
 
     @CreationTimestamp
+    @Column(nullable = false)
     private Date createdAt;
 
     @UpdateTimestamp
+    @Column(nullable = false)
     private Date updatedAt;
 
-    public PersonalClient(String firstName, String middleName, String surname, String gender, String maritalStatus, Date dateOfBirth, String placeOfBirth, int age, String nextOfKin, String nationality, String occupation, Client personal) {
+    public IndividualClient(String firstName, String middleName, String surname, String gender, String maritalStatus, LocalDate dateOfBirth, String placeOfBirth, int age, String nextOfKin, String nationality, String occupation, Client individual) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.surname = surname;
         this.gender = Gender.valueOf(gender);
-        this.maritalStatus = MaritalStaus.valueOf(maritalStatus);
+        this.maritalStatus = MaritalStatus.valueOf(maritalStatus);
         this.dateOfBirth = dateOfBirth;
         this.placeOfBirth = placeOfBirth;
         this.age = age;
         this.nextOfKin = nextOfKin;
         this.nationality = nationality;
         this.occupation = occupation;
-        this.personal = personal;
+        this.individual= individual;
     }
 
-    public PersonalClient() {
+    public IndividualClient() {
 
     }
 

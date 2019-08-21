@@ -17,21 +17,22 @@
                 </div>
                 <div class="col-12">
                     <div class="list-group list-group-horizontal-xl shadow-sm profile-list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#profile" role="tab" aria-controls="home">Profile</a>
                         <a sec:authorize="hasRole('ROLE_ADMIN')" class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#user" role="tab" aria-controls="profile" >Users</a>
                         <a sec:authorize="hasRole('ROLE_ADMIN')"  class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#branch" role="tab" aria-controls="settings">Branch</a>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')"  class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#loans" role="tab" aria-controls="loans">Loans</a>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="tab-content profile-tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile">
-                            <profile></profile>
-                        </div>
-                        <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+
+                        <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
                             <user></user>
                         </div>
                         <div class="tab-pane fade" id="branch" role="tabpanel" aria-labelledby="branch-tab">
                             <branch></branch>
+                        </div>
+                        <div class="tab-pane fade" id="loans" role="tabpanel" aria-labelledby="loan-tab">
+                            <loansettings></loansettings>
                         </div>
                     </div>
                 </div>

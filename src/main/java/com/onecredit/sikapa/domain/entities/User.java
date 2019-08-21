@@ -3,6 +3,7 @@ package com.onecredit.sikapa.domain.entities;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,6 +13,9 @@ import java.util.Date;
 import java.util.List;
 
 
+
+//TODO CHECK USER STATUS DEFAULT
+//TODO APPLY VALIDATION TO ALL MODELS
 
 //@Table(name = "\"user\"")
 @Table(name = "user")
@@ -28,8 +32,11 @@ public class User{
 
 
     @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO,  generator="native")
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
     @Column(nullable = false)
     private Long id;
 
@@ -56,15 +63,17 @@ public class User{
     private String permissions = "";
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<PersonalClient>clients=new ArrayList<>();
+    private List<IndividualClient>clients=new ArrayList<>();
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Branch branch;
 
     @CreationTimestamp
+    @Column(nullable = false)
     private Date createdAt;
 
     @UpdateTimestamp
+    @Column(nullable = false)
     private Date updatedAt;
 
     public User(String firstname,String middlename,String surname,String username, String password, String roles, String permissions) {
@@ -95,6 +104,7 @@ public class User{
         }
         return new ArrayList<>();
     }
+
 
 
 }

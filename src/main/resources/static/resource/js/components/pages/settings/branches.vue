@@ -3,10 +3,10 @@
 
         <div class="row card-row">
             <div class="col-auto mr-auto">
-                 <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input>
+                <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input>
             </div>
             <div class="col-auto">
-                <button @click="modalShow = true" class="btn btn-success btn-sm">Add Branch</button>
+                <button @click="modalShow = true" class="btn btn-success btn-block">Add Branch</button>
                 <b-modal title="Add Branch" v-model="modalShow">
                     <form>
                         <div class="form-group">
@@ -29,7 +29,7 @@
                     <div slot="modal-footer" class="w-100">
                         <b-button
                                 variant="success"
-                                size="sm"
+                                size="block"
                                 class="float-right"
                                 @click="createBranch"
                         >
@@ -41,34 +41,37 @@
         </div>
         <div class="card shadow-sm">
             <div class="card-body  table-card-body">        <!-- Main table element -->
-        <b-table
-                head-variant="primary"
-                show-empty
-                stacked="md"
-                :items="branches"
-                :current-page="currentPage"
-                :per-page="perPage"
+                <b-table
+                        head-variant="primary"
+                        show-empty
+                        stacked="md"
+                        :items="branches"
+                        :fields:="fields"
+                        :current-page="currentPage"
+                        :per-page="perPage"
+                        :filter="filter"
+                        @filtered="onFiltered"
 
-        >
-            <template slot="name" slot-scope="row">
-                {{ row.value.first }} {{ row.value.last }}
-            </template>
+                >
+                    <template slot="name" slot-scope="row">
+                        {{ row.value.first }} {{ row.value.last }}
+                    </template>
 
-            <template slot="isActive" slot-scope="row">
-                {{ row.value ? 'Yes :)' : 'No :(' }}
-            </template>
+                    <template slot="isActive" slot-scope="row">
+                        {{ row.value ? 'Yes :)' : 'No :(' }}
+                    </template>
 
-            <template slot="actions" slot-scope="row">
-                <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-                    Info modal
-                </b-button>
-            </template>
+                    <template slot="actions" slot-scope="row">
+                        <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                            Info modal
+                        </b-button>
+                    </template>
 
 
-        </b-table>
+                </b-table>
             </div>
         </div>
-             <b-row>
+        <b-row>
             <b-col md="6" class="my-1">
                 <b-pagination
                         v-model="currentPage"
@@ -83,20 +86,11 @@
 </template>
 
 <script type="text/javascript">
+    import {getResource,createResource,updateResource} from "../../../utils/resource";
+
     export default {
-        mounted(){
-                axios.get("branches").then((res)=>{
-                    this.branches=res.data;
-                    this.branches.map((branch)=>{
-                        return {
-                            "id":branch['id'],
-                            "area":branch['area'],
-                            "region":branch['region']
-                        }
-                    })
-                });
-                console.log(this.branches)
-            this.totalRows = this.items.length
+        async mounted(){
+          this.getBranches();
         },
 
         data() {
@@ -105,7 +99,7 @@
                 area:'',
                 region:'',
                 branches:[],
-                items: [],
+                fields:["banch","area"],
                 totalRows: 1,
                 currentPage: 1,
                 perPage: 5,
@@ -114,11 +108,6 @@
                 sortDesc: false,
                 sortDirection: 'asc',
                 filter: null,
-                infoModal: {
-                    id: 'info-modal',
-                    title: '',
-                    content: ''
-                }
             }
         },
         methods:{
@@ -127,16 +116,30 @@
                     "area":this.area,
                     "region":this.region
                 }).then((res)=>{
-                    console.log(res)
+                    this.getBranches();
                     this.modalShow=false;
                 })
 
             },
-            info(item, index, button) {
-                this.infoModal.title = `Row index: ${index}`
-                this.infoModal.content = JSON.stringify(item, null, 2)
-                this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+            async getBranches(){
+                const[ex,res]= await getResource("branches");
+                if (ex){
+                    console.log(ex);
+                } else {
+                  this.branches=  res.data.map((branch)=>{
+                        return {
+                            "id":branch["id"],
+                            "area":branch['area'],
+                            "region":branch['region']
+                        }
+                    })
+                }
             },
+            onFiltered(filteredItems) {
+                // Trigger pagination to update the number of buttons/pages due to filtering
+                this.totalRows = filteredItems.length
+                this.currentPage = 1
+            }
         }
 
     }

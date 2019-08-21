@@ -30,8 +30,10 @@ build/
 
 ### VS Code ###
 .vscode/
+.vagrant/
 target
 mvnw.cmd
 mvnw
 webpack.mix.js
 package-lock.json
+Vagranfile

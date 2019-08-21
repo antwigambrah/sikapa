@@ -5,11 +5,13 @@ import java.util.Collections;
 
 import org.springframework.context.annotation.Bean;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 public class CorsFilter {
+
 
     public CorsFilter(UrlBasedCorsConfigurationSource source) {
     }
