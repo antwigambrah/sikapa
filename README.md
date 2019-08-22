@@ -1,5 +1,5 @@
 # sikapa
-A simple loan management platform built to streamline loan applications using spring boot
+A simple loan management platform built to streamline loan applications
 
 
 ### Current Stage
