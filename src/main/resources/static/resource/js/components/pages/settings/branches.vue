@@ -6,7 +6,7 @@
                 <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input>
             </div>
             <div class="col-auto">
-                <button @click="modalShow = true" class="btn btn-success btn-block">Add Branch</button>
+                <button @click="modalShow = true" class="btn btn-primary  btn-block">Add Branch</button>
                 <b-modal title="Add Branch" v-model="modalShow">
                     <form>
                         <div class="form-group">
@@ -28,7 +28,7 @@
                     </form>
                     <div slot="modal-footer" class="w-100">
                         <b-button
-                                variant="success"
+                                variant="primary"
                                 size="block"
                                 class="float-right"
                                 @click="createBranch"

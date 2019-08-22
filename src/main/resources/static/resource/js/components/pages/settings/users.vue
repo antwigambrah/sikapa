@@ -6,7 +6,7 @@
                  <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input>
             </div>
             <div class="col-auto">
-                <button @click="modalShow = true" class="btn btn-success btn-block">Add User</button>
+                <button @click="modalShow = true" class="btn btn-primary btn-block">Add User</button>
                 <b-modal  v-model="modalShow" title="Add User" :hide-header-close=true >
                     <form>
                          <div class="form-group">
@@ -27,7 +27,7 @@
                     </form>
                     <div slot="modal-footer" class="w-100">
                         <b-button
-                                variant="success"
+                                variant="primary"
                                 size="block"
                                 class="float-right"
                                 @click="createUser()">
@@ -44,7 +44,7 @@
                     </div>
                     <div slot="modal-footer" class="w-100">
                         <b-button
-                                variant="success"
+                                variant="primary"
                                 size="block"
                                 class="float-right"
                                 @click="updateUser()">

@@ -44,7 +44,7 @@
                 </b-modal>
             </div>
             <div class="col-auto">
-                <button class="btn btn-success btn-block" @click="modalShow = true">Edit User</button>
+                <button class="btn btn-primary btn-block" @click="modalShow = true">Edit User</button>
             </div>
         </div>
 
