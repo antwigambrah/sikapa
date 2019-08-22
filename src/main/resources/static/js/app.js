@@ -93579,7 +93579,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-success btn-block",
+                staticClass: "btn btn-primary  btn-block",
                 on: {
                   click: function($event) {
                     _vm.modalShow = true
@@ -93702,7 +93702,7 @@ var render = function() {
                       "b-button",
                       {
                         staticClass: "float-right",
-                        attrs: { variant: "success", size: "block" },
+                        attrs: { variant: "primary", size: "block" },
                         on: { click: _vm.createBranch }
                       },
                       [
@@ -93981,7 +93981,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-success btn-block",
+            staticClass: "btn btn-primary btn-block",
             on: {
               click: function($event) {
                 _vm.modalShow = true
@@ -94088,7 +94088,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-success btn-block",
+                staticClass: "btn btn-primary btn-block",
                 on: {
                   click: function($event) {
                     _vm.modalShow = true
@@ -94245,7 +94245,7 @@ var render = function() {
                       "b-button",
                       {
                         staticClass: "float-right",
-                        attrs: { variant: "success", size: "block" },
+                        attrs: { variant: "primary", size: "block" },
                         on: {
                           click: function($event) {
                             return _vm.createUser()
@@ -94325,7 +94325,7 @@ var render = function() {
                       "b-button",
                       {
                         staticClass: "float-right",
-                        attrs: { variant: "success", size: "block" },
+                        attrs: { variant: "primary", size: "block" },
                         on: {
                           click: function($event) {
                             return _vm.updateUser()
