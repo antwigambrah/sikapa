@@ -109468,7 +109468,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.baseURL = "http://localhost:8080/api/";
+axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.baseURL = "/api/";
 /**
  * Retrieve resource
  *
