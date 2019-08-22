@@ -6,7 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Entity
+
 @Getter
 @Setter
 public class LoanFee {
