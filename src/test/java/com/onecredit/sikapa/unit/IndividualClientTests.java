@@ -22,7 +22,7 @@ import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
 @ActiveProfiles("dev")
-public class PersonalClientTests {
+public class IndividualClientTests {
 
     @Mock
     private IndividualClientRepository clientRepository;
@@ -54,14 +54,14 @@ public class PersonalClientTests {
     }
 
     @Test
-    public void creat_personal_client_is_successful(){
+    public void create_individual_client_is_successful(){
                 given(clientRepository.findById(1L)).willReturn(java.util.Optional.of(this.personalClient));
                 IndividualClient clientData=clientService.findClientById(1L);
                 assertEquals(clientData.getFirstName(),"kwame");
     }
 
     @Test
-    public void personal_client_gender_returns_string(){
+    public void individual_client_gender_returns_string(){
         given(clientRepository.findById(1L)).willReturn(java.util.Optional.of(personalClient));
         IndividualClient clientData=clientService.findClientById(1L);
         assertEquals(clientData.getGender(),IndividualClient.Gender.MALE);

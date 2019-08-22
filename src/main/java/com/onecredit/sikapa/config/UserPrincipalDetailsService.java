@@ -24,5 +24,4 @@ import org.springframework.stereotype.Service;
 
         return new UserPrincipal(user);
     }
-
 }
