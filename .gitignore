@@ -30,7 +30,8 @@ build/
 
 ### VS Code ###
 .vscode/
-.vagrant/
+.vagrant
+fonts
 target
 mvnw.cmd
 mvnw
