@@ -1,5 +1,3 @@
-create schema if not exists onecredit collate latin1_swedish_ci;
-
 create table if not exists branch
 (
     id bigint auto_increment
