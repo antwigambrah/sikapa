@@ -35,10 +35,6 @@ public class Branch {
 
     private List<User> users = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-
-    private List<IndividualClient> clients=new ArrayList<>();
-
     @CreationTimestamp
     @Column(nullable = false)
     private Date createdAt;

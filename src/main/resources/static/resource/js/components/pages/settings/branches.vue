@@ -111,14 +111,23 @@
             }
         },
         methods:{
-            createBranch(){
-                axios.post("/branches",{
+          async   createBranch(){
+                const [ex,res]= await  createResource("branches",{
                     "area":this.area,
                     "region":this.region
-                }).then((res)=>{
-                    this.getBranches();
-                    this.modalShow=false;
-                })
+                });
+              this.getBranches();
+              this.modalShow=false;
+              this.$bvToast.toast('Branch Created', {
+                  variant: "success",
+                  solid: true,
+                  toaster:"b-toaster-bottom-left",
+                  autoHideDelay:100,
+                  noCloseButton:true
+              });
+
+              this.area="";
+              this.region="";
 
             },
             async getBranches(){

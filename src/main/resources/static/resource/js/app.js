@@ -28,8 +28,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import  store from "./store"
 const app = new Vue({
     el: '#app',
+    store,
     components:require('./components')
 
 });

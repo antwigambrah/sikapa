@@ -85,6 +85,7 @@
                        autoHideDelay:500,
                        noCloseButton:true
                    });
+                   window.location.href="/login?logout"
 
                }
             },

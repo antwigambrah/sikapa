@@ -1,6 +1,7 @@
 package com.onecredit.sikapa.api;
 
 import com.onecredit.sikapa.domain.dto.BranchDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +17,23 @@ public class BranchController {
 
     private final BranchService branchService;
 
+    @Autowired
     public BranchController(BranchService branchService) {
         this.branchService = branchService;
     }
 
+
+
+    /**
+     * Get Branches
+     *
+     * @return Branches
+     */
+
+    @GetMapping(path = "/branches",produces =MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<List<BranchDTO>> index() {
+        return ResponseEntity.ok(this.branchService.all());
+    }
 
     /**
      * Create Branch
@@ -55,7 +69,8 @@ public class BranchController {
      */
     @GetMapping(path="/branches/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public BranchDTO find(@PathVariable(value = "id") Long id){
+    public BranchDTO find(@PathVariable(value = "id") Long id)
+    {
         return this.branchService.findBranchById(id);
     }
 
@@ -69,20 +84,9 @@ public class BranchController {
     @RequestMapping(path = "/branches/{id}",method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?>delete (@PathVariable(value="id") Long id){
-        this.branchService.deleteUser(id);
+        this.branchService.deleteBranch(id);
         return ResponseEntity.ok().build();
 
-    }
-
-    /**
-     * Retrieve Branches
-     *
-     * @return Branches
-     */
-
-    @GetMapping(path = "/branches",produces =MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<List<BranchDTO>> all() {
-        return ResponseEntity.ok(this.branchService.all());
     }
 
 }

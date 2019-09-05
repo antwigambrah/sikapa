@@ -12,8 +12,8 @@
                                     Create
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="New Application">
-                                    <a class="dropdown-item" href="/loans?type=individual">Individual</a>
-                                    <a class="dropdown-item" href="/loans?type=corporate">SME/Business</a>
+                                    <a class="dropdown-item" href="/loan/individual">Individual</a>
+                                    <a class="dropdown-item" href="/loan/business">SME/Business</a>
                                 </div>
                             </div>
                         </div>
