@@ -19,4 +19,5 @@ work in progress https://sikapa.herokuapp.com/
 * Mysql
 
 
-
+## ! Note 
+This system is being made for internal use at a bank pertaining to a specific use case.Thank you.
