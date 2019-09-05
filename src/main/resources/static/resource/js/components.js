@@ -1,12 +1,9 @@
 import Vue from 'vue'
 
 import Home from './components/pages/home'
-import Client from './components/pages/clients/client'
-import CreateIndividualClient from './components/pages/clients/create-individual'
-import IndividualClient from './components/pages/clients/individual'
-import BusinessClient from './components/pages/clients/business'
 import Loan from './components/pages/loans/loan'
 import LoanSettings from './components/pages/loans/loan-settings.vue'
+import LoanProducts from './components/pages/loans/loan-products'
 import CorporateLoan from './components/pages/loans/corporate'
 import IndividualLoan from './components/pages/loans/individual'
 import BootstrapVue from 'bootstrap-vue'
@@ -23,15 +20,12 @@ Vue.use(datePicker);
 Vue.use(BootstrapVue);
 
 Vue.component('home',Home);
-Vue.component('client',Client);
-Vue.component('businessclient',BusinessClient);
-Vue.component('createindividualclient',CreateIndividualClient);
 Vue.component('loan',Loan);
-Vue.component('loansettings',LoanSettings)
+Vue.component('loansettings',LoanSettings);
+Vue.component('loan-products',LoanProducts);
 Vue.component('individualloan',IndividualLoan);
 Vue.component('corporateloan',CorporateLoan);
 Vue.component('user',User);
 Vue.component('branch',Branches);
 Vue.component('role',Role);
 Vue.component("profile",Profile);
-Vue.component('individualclient',IndividualClient)

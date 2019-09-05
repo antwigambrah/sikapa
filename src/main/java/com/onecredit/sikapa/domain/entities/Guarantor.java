@@ -6,7 +6,10 @@ import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 
+
+@Table
 @Entity
 @Getter
 @Setter
@@ -41,11 +44,13 @@ public class Guarantor {
     @Column(nullable = false)
     private String mobileNumber;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Relationship relationship;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Loan loan;
 
-    public Guarantor(Long id, String firstName, String middleName, String surname, String houseNumber, String mobileNumber, Relationship relationship) {
-        this.id = id;
+    public Guarantor(String firstName, String middleName, String surname, String houseNumber, String mobileNumber, Relationship relationship) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.surname = surname;
@@ -54,4 +59,7 @@ public class Guarantor {
         this.relationship = relationship;
     }
 
+    public  Guarantor(){
+
+    }
 }

@@ -50,7 +50,7 @@ public class DBSeeder implements ApplicationRunner {
         Branch branch=new Branch("head-office","head-office");
         this.branchRepository.save(branch);
         String password=this.passwordEncoder.encode("bingo1234");
-        User admin=new User("Antwi","","Gambrah","AGambrah",password,"ADMIN","");
+        User admin=new User("Admin","","Admin","admin",password,"ADMIN","");
         admin.setBranch(branch);
         this.userRepository.save(admin);
     }

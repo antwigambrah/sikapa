@@ -57,7 +57,7 @@ public class UserService {
         if (user.getRoles()!=null){
             user1.setRoles(user.getRoles());
         }
-        if (user.getBranch()!=null)
+        if (user.getBranch().getId()!=null)
         {
 
             Branch branch = this.branchRepository.findById(user.getBranch().getId()).orElse(new Branch());

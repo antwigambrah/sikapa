@@ -6,13 +6,10 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        count: 0,
-        per
+        guarantors:[]
     },
     mutations: {
-        increment (state) {
-            state.count++
-        }
+
     }
 });
 

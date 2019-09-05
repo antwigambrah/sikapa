@@ -3,6 +3,7 @@ package com.onecredit.sikapa.api;
 import com.onecredit.sikapa.domain.dto.UserDTO;
 import com.onecredit.sikapa.domain.entities.User;
 import com.onecredit.sikapa.domain.services.AuthUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
@@ -14,22 +15,23 @@ import org.springframework.web.bind.annotation.*;
 public class AuthUserController {
 
 
-    private AuthUserService authUserService;
+    private AuthUserService auth;
 
 
-    public AuthUserController(AuthUserService authUserService) {
-        this.authUserService = authUserService;
+    @Autowired
+    public AuthUserController(AuthUserService  auth) {
+        this.auth =  auth;
     }
 
     /**
-     *Retrieve authenticated user
+     *Get Authenticated User
      *
      * @return Authenticated User
      */
     @GetMapping(path = "auth/user",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public UserDTO index(Authentication auth){
-        return this.authUserService.findUserByName(auth.getName());
+        return this.auth.findUserByName(auth.getName());
 
     }
 
@@ -43,7 +45,7 @@ public class AuthUserController {
     @PatchMapping(path="/auth/user/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public UserDTO update(@PathVariable(value = "id") Long id, @RequestBody User user){
-        return this.authUserService.updateUser(id,user);
+        return this.auth.updateUser(id,user);
     }
 
 }

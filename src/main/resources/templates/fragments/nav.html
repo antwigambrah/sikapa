@@ -16,18 +16,15 @@
                         Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/clients">
-                        <i class="lni-users li-icon"></i>
-                        Clients</a>
+                    <a class="nav-link" href="/profile">
+                        <i class="lni-user li-icon"></i>
+                        Profile</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/loans"><i class="lni-book li-icon"></i>
-                        Loans</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/reports">
-                        <i class="lni-bar-chart li-icon"></i>
-                        Reports</a>
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"  >
+                    <a class="nav-link" href="/settings">
+                        <i class="lni-cog li-icon"></i>
+                            Settings
+                        </a>
                 </li>
 
             </ul>
@@ -43,9 +40,7 @@
                             <input hidden type="submit" value="Logout"/>
                         </form>
 
-                        <a class="dropdown-item" href="/profile" > <i class="lni-user li-icon"></i> Profile </a>
 
-                        <a sec:authorize="hasRole('ROLE_ADMIN')"   class="dropdown-item" href="/settings" > <i class="lni-cog li-icon"></i> Settings </a>
                     </div>
                 </li>
             </ul>

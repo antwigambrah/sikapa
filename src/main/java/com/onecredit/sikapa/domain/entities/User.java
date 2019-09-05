@@ -63,7 +63,7 @@ public class User{
     private String permissions = "";
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<IndividualClient>clients=new ArrayList<>();
+    private List<Loan>loans=new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Branch branch;

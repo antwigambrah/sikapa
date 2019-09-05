@@ -111,7 +111,7 @@
                     middlename:"",
                     surname:"",
                     status:1,
-                    role:null,
+                    roles:null,
                     branch:{
                         id:null
                     }
@@ -145,23 +145,35 @@
         },
         methods:{
           async  createUser(){
-              console.log(this.user)
                 const[ex,res]= await  createResource("users",this.user);
                 if (ex){
                     console.log(ex)
-                } else {
-                    this.modalShow=false;
                 }
+              console.log(this.user.branch.id)
+
+              this.modalShow=false;
+              this.getUsers();
+              this.$bvToast.toast('User Created', {
+                  variant: "success",
+                  solid: true,
+                  toaster:"b-toaster-bottom-left",
+                  autoHideDelay:100,
+                  noCloseButton:true
+              });
+              this.user.firstname="";
+              this.user.middlename="";
+              this.user.lastname=""
+
 
             },
             async getUsers(){
-                const[ex,res1]= await getResource("users");
+                const[ex,res]= await getResource("users");
                 if (ex){
                     console.log(ex);
 
                 }else {
 
-                   this.users= res1.data.map((user) => {
+                   this.users= res.data.map((user) => {
                         return{
                             id:user.id,
                             username: user.username,

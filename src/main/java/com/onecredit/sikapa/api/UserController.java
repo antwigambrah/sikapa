@@ -26,6 +26,17 @@ public class UserController {
 
 
     /**
+     * Get Users
+     *
+     * @return Users
+     */
+    @GetMapping(path = "/users",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<List<UserDTO>>index() {
+        return ResponseEntity.ok(this.userService.all());
+    }
+
+    /**
      *  Create User
      *
      * @param user User
@@ -81,16 +92,7 @@ public class UserController {
 
     }
 
-    /**
-     * Retrieve Users
-     *
-     * @return Users
-     */
-    @GetMapping(path = "/users",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<UserDTO>>all() {
-        return ResponseEntity.ok(this.userService.all());
-    }
+
 
 
 }

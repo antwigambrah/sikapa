@@ -26,10 +26,16 @@ public class AuthUserService {
         this.userMapper = userMapper;
         this.passwordEncoder=passwordEncoder;
     }
+
+    /**
+     * Update User
+     *
+     * @param id Id
+     * @param user User
+     * @return User
+     */
     public UserDTO updateUser(Long id, User user){
-        // TODO CREATE A CUSTOM EXCEPTION TO HANDLE DATA NOT FOUND
-        //TODO DO SOMETHING ABOUT THE IF STATEMENTS
-        //TODO MAKE UPATED USER LOGOUT THEN CONTINUE
+
         User user1=this.userRepository.findById(id).orElse(new User());
         if (user.getUsername() != null) {
             user1.setUsername(user.getUsername());
@@ -42,8 +48,13 @@ public class AuthUserService {
         return this.userMapper.toUserDTO(user1);
     }
 
-
-    public UserDTO findUserByName(String username) throws UsernameNotFoundException {
+    /**
+     * Find User
+     *
+     * @param username User
+     * @return User
+     */
+    public UserDTO findUserByName(String username) {
         User user = this.userRepository.findByUsername(username);
         return this.userMapper.toUserDTO(user);
     }
