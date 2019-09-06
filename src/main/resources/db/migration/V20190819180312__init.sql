@@ -1,7 +1,6 @@
-create table if not exists branch
+create table branch
 (
-    id bigint auto_increment
-        primary key,
+    id bigint auto_increment  primary key,
     area varchar(255) not null,
     created_at datetime not null,
     region varchar(255) not null,
@@ -12,10 +11,9 @@ create table if not exists branch
         unique (area)
 );
 
-create table if not exists user
+create table  user
 (
-    id bigint auto_increment
-        primary key,
+    id bigint auto_increment  primary key,
     created_at datetime not null,
     firstname varchar(255) not null,
     middlename varchar(255) null,
@@ -31,7 +29,7 @@ create table if not exists user
         foreign key (branch_id) references branch (id)
 );
 
-create table if not exists branch_users
+create table branch_users
 (
     branch_id bigint not null,
     users_id bigint not null,
