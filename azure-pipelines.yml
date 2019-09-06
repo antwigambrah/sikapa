@@ -12,7 +12,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  CLEARDB_DATABASE_URL: 'mysql://b47179cacd5e5a:5ff735ba@us-cdbr-iron-east-02.cleardb.net/heroku_92460f14824e429?reconnect=true'
+  CLEARDB_DATABASE_URL: 'jdbc:mysql://b47179cacd5e5a:5ff735ba@us-cdbr-iron-east-02.cleardb.net/heroku_92460f14824e429?reconnect=true'
   CLEARDB_DATABASE_USERNAME: 'b47179cacd5e5a'
   CLEARDB_DATABASE_PASSWORD: '5ff735ba'
 steps:
