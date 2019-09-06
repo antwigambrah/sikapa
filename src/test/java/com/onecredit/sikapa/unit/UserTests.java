@@ -21,7 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 
 @RunWith(MockitoJUnitRunner.class)
-@ActiveProfiles("test")
+@ActiveProfiles("prod")
 public class UserTests {
 
     @Mock
