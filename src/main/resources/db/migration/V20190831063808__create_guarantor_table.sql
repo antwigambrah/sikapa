@@ -8,4 +8,4 @@ create table if not exists guarantor
     mobile_number varchar(255) not null,
     relationship  varchar(255) not null,
     loan_id       bigint   null references loan(id)
-)
+);
