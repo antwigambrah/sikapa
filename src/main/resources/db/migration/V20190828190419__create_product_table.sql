@@ -5,4 +5,4 @@ create table if not exists product(
     maximum_amount double not null,
     repayment_period integer not null,
     interest_rate double not null
-) ENGINE INNODB;
+);

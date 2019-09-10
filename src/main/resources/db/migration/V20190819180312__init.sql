@@ -6,7 +6,7 @@ create table branch
     created_at datetime not null,
     region varchar(255) not null unique ,
     updated_at datetime not null
-) ENGINE INNODB charset =utf8;
+);
 
 create table  user
 (
@@ -22,10 +22,10 @@ create table  user
     updated_at datetime not null,
     username varchar(255) not null,
     branch_id bigint not null references branch(id)
-) ENGINE INNODB;
+);
 
 create table branch_users
 (
     branch_id bigint not null references branch(id),
     users_id bigint not null references user(id)
-) ENGINE INNODB;
+);
