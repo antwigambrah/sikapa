@@ -14,8 +14,6 @@ pool:
 
 variables:
  DB_URL: 'jdbc:mysql://sikapa.ckxr5p78bysg.us-west-2.rds.amazonaws.com/onecredit'
- DB_USERNAME: 'admin'
- DB_PASSWORD: 'bingo1234'
 steps:
   - task: Maven@3
     inputs:
