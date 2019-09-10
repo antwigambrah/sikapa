@@ -45,8 +45,6 @@ public class DBSeeder implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        this.flyway.clean();
-        this.flyway.migrate();
         Branch branch=new Branch("head-office","head-office");
         this.branchRepository.save(branch);
         String password=this.passwordEncoder.encode("bingo1234");
