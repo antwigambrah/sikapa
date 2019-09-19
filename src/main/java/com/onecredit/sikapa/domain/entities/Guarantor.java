@@ -7,7 +7,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Null;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 @Table
@@ -63,4 +65,5 @@ public class Guarantor {
     public  Guarantor(){
 
     }
+
 }

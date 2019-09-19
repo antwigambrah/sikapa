@@ -71,7 +71,6 @@
         },
         methods:{
            async  updateUser(){
-               console.log(this.user);
                 const[ex,res]=await updateResource("/auth/user/"+this.user.id,this.user);
                if (ex){
                    console.log(ex)
@@ -94,7 +93,6 @@
                 if(ex){
                     console.log(ex)
                 }else{
-                    console.log(res);
 
                     this.user.username=res.data.username;
                     this.user.id=res.data.id;

@@ -2,9 +2,14 @@ package com.onecredit.sikapa.api;
 
 
 import com.onecredit.sikapa.domain.dto.LoanDTO;
+import com.onecredit.sikapa.domain.dto.UserDTO;
 import com.onecredit.sikapa.domain.entities.Loan;
+import com.onecredit.sikapa.domain.entities.User;
+import com.onecredit.sikapa.domain.services.AwsS3ServiceImp;
 import com.onecredit.sikapa.domain.services.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +21,12 @@ public class LoanController {
 
     private LoanService loans;
 
+    private AwsS3ServiceImp s3ServiceImp;
 
     @Autowired
-    public LoanController(LoanService loans) {
+    public LoanController(LoanService loans, AwsS3ServiceImp s3ServiceImp) {
         this.loans = loans;
+        this.s3ServiceImp = s3ServiceImp;
     }
 
     /**
@@ -45,4 +52,30 @@ public class LoanController {
 
         return this.loans.createLoan(loan,auth);
     }
+
+
+    /**
+     * Find Loan
+     *
+     * @param id Long
+     * @return Loan
+     */
+    @GetMapping(path = "loan/{id}",produces = "application/json")
+    public LoanDTO find(@PathVariable Long id){
+        return this.loans.findLoan(id);
+    }
+
+
+    /**
+     * Update Loan
+     *
+     * @param id Long
+     * @param loan Loan
+     * @return Loan
+     */
+    @PatchMapping(path = "/loan/{id}",produces = "application/json")
+    public LoanDTO update(@PathVariable Long id,@RequestBody Loan loan){
+    return loans.updateLoan(id,loan);
+    }
+
 }

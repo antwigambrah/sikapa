@@ -6,11 +6,15 @@
             <div class="col-8">
                 <label class="form-label">Choose</label>
                 <div>
-                    <b-form-file multiple :file-name-formatter="formatNames"></b-form-file>
+                    <b-form-file multiple :file-name-formatter="getFiles"></b-form-file>
 
 
                 </div>
-            </div>
+                <p>
+                    Note: Only single files can be uploaded for now
+                </p>
+
+                </div>
         </div>
 </template>
 
@@ -22,14 +26,23 @@
             }
         },
         methods:{
-            formatNames(files) {
-                console.log(files)
-                if (files.length === 1) {
-                    return files[0].name
-                } else {
-                    return `${files.length} files selected`
-                }
-            }
+
+            getFiles(files) {
+                let that=this;
+
+                var reader  = new FileReader();
+
+        reader.addEventListener("load", function () {
+            that.$emit("getDocument",reader.result);
+        }, false);
+
+        if (files) {
+
+            reader.readAsDataURL(files[0]);
+
+          return files[0].name
+        }
+    }
         }
     }
 </script>

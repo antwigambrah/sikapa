@@ -1,6 +1,17 @@
 <template>
    <div>
        <div class="row">
+           <div class="col">
+               <nav aria-label="breadcrumb">
+                   <ol class="breadcrumb">
+                       <li class="breadcrumb-item">Steps</li>
+                       <li class="breadcrumb-item"><a href="/settings">Create Loan Product</a></li>
+                       <li class="breadcrumb-item"><a href="/loan/individual">Create Loan</a></li>               </ol>
+               </nav>
+           </div>
+       </div>
+       <div class="row">
+
            <div class="col-4">
                <div class="card mb-3 shadow-sm indicator-card" style="max-width: 540px;">
                    <div class="card-body">
@@ -84,11 +95,15 @@
                        >
 
                            <template slot="actions" slot-scope="row">
-                               <button class="btn btn-sm btn-outline-primary" @click="editUser(row.item.id)"><i class="lni-eye"></i></button>
+                               <button class="btn btn-sm btn-outline-primary" @click="viewLoan(row.item)"><i class="lni-eye"></i></button>
                            </template>
 
 
                        </b-table>
+                       <b-modal v-model="modalShow"  size="xl"  title="Loan Details" hide-footer>
+                           <view-loan :loan="loan_id" @getLoans="getLoans"></view-loan>
+
+                       </b-modal>
                    </div>
                </div>
                <b-row>
@@ -107,7 +122,8 @@
 </template>
 
 <script>
-    import {getResource} from "../../utils/resource";
+    import {getResource, updateResource} from "../../utils/resource";
+    import ViewLoan from "./loans/view-loan";
 
     export default {
         mounted(){
@@ -115,10 +131,13 @@
         },
         name: "home",
         components:{
+            ViewLoan
 
         },
         data(){
             return {
+                loan_id:null,
+                modalShow:false,
                 loans:[],
                 fields:["No.","client_name","account_no","amount","initiate_date","status","branch","actions"],
                 totalRows: 1,
@@ -137,6 +156,7 @@
         },
         methods:{
             async getLoans(){
+                this.modalShow=false;
                 const[ex,res]= await  getResource("loan");
                 console.log(res);
                 this.loans=res.data.map((data)=>{
@@ -159,10 +179,14 @@
                 })
             },
             onFiltered(filteredItems) {
-                // Trigger pagination to update the number of buttons/pages due to filtering
                 this.totalRows = filteredItems.length;
                 this.currentPage = 1
-            }
+            },
+            viewLoan(item){
+              this.modalShow=true;
+                console.log(item["No."]);
+                this.loan_id=item["No."];
+            },
 
         }
     }

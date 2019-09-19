@@ -47,6 +47,14 @@ async function updateResource(url,resource){
     }
 }
 
+async  function  findResource(url) {
+    try{
+        let res= await axios.get(url);
+        return [null,res]
+    } catch(err) {
+        return [err,null]
+    }
+}
 
 
-export {getResource,createResource,updateResource}
+export {getResource,createResource,updateResource,findResource}

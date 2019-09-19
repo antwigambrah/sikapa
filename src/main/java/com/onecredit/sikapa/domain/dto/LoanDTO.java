@@ -24,5 +24,6 @@ public class LoanDTO {
     private LocalDate initiateDate;
     private LocalDate endDate;
     private User user;
+    private String documents;
     private Loan.LoanStatus status;
 }

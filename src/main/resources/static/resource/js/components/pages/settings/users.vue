@@ -149,7 +149,6 @@
                 if (ex){
                     console.log(ex)
                 }
-              console.log(this.user.branch.id)
 
               this.modalShow=false;
               this.getUsers();

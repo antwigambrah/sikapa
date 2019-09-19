@@ -120,14 +120,19 @@
                         </div>
 
                         <hr>
-                        <document></document>
+                        <document @getDocument="getDocument"></document>
 
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-auto mr-auto"></div>
-                    <div class="col-auto"><button class="btn btn-primary btn-block" @click.prevent="createLoan">save</button></div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary btn-block" @click.prevent="createLoan">
+                        <div class="spinner-border text-light spinner-border-sm" role="status" v-if="showSpinner">
+                        </div>
+                            Save
+                    </button></div>
                 </div>
             </div>
         </div>
@@ -139,6 +144,7 @@
     import {createResource, getResource} from "../../../utils/resource";
     import Guarantor from "./guarantor"
     import Document from './documents'
+    import LoanView from './view-loan'
     export default {
         mounted(){
           this.getProducts();
@@ -146,10 +152,12 @@
         name: "load-details",
         components:{
             Guarantor,
-            Document
+            Document,
+            LoanView
         },
         data(){
             return {
+                showSpinner:false,
                 loan:{
                     clientName:"",
                     clientPhoneNumber:"",
@@ -166,7 +174,8 @@
                     comments:"",
                     insurancePremium: null,
                     commitmentFee: null,
-                    status:"INITIATED"
+                    status:"INITIATED",
+                    documents:""
 
                 },
 
@@ -191,19 +200,22 @@
                 products:[
                     { value: null, text: 'Loan Product' },
                 ],
-                guarantors:[]
+                guarantors:[],
+                guarantorImage:""
             }
         },
         methods:{
             async createLoan(){
+                    this.showSpinner=true;
                 const[ex,res]=await createResource("loan",this.loan);
                 if(ex){
                     console.log(ex)
                 }
 
 
-                this.createGuarantor(res.data.id)
+                this.createGuarantor(res.data.id);
 
+                window.location.href="/";
 
             },
           async   getProducts(){
@@ -219,7 +231,6 @@
             },
             async createGuarantor(Loanid){
                 this.guarantors.map(async (guarantor)=>{
-                    console.log(guarantor);
                     const[ex,res]=await  createResource("guarantor",
                         {
                             "firstName":guarantor["firstName"],
@@ -233,21 +244,24 @@
                             }});
                 });
 
-                this.$bvToast.toast('Loan  Created', {
-                    variant: "success",
-                    solid: true,
-                    toaster:"b-toaster-bottom-left",
-                    autoHideDelay:100,
-                    noCloseButton:true
-                });
+                // this.$bvToast.toast('Loan  Created', {
+                //     variant: "success",
+                //     solid: true,
+                //     toaster:"b-toaster-bottom-left",
+                //     autoHideDelay:100,
+                //     noCloseButton:true
+                // });
+                this.showSpinner=false;
 
             },
             addGuarantor(guarantor){
-                console.log(guarantor);
                 this.guarantors.push(guarantor);
 
-            }
+            },
 
+            getDocument(document){
+                this.loan.documents=document;
+            }
 
         }
     }

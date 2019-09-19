@@ -31,12 +31,23 @@ public class UserService {
         this.passwordEncoder=passwordEncoder;
     }
 
+    /**
+     * Get Users
+     *
+     * @return User
+     */
     public List<UserDTO> all() {
         return this.userMapper.toUserDTOs(
                 this.userRepository.findAll()
         );
     }
 
+    /**
+     * Create User
+     *
+     * @param user User
+     * @return User
+     */
     public UserDTO createUser(User user) {
         String username=user.getFirstname().toUpperCase().charAt(0) + user.getSurname()  ;
         Branch branch = this.branchRepository.findById(user.getBranch().getId()).orElse(new Branch());
@@ -49,9 +60,14 @@ public class UserService {
         return this.userMapper.toUserDTO(user);
     }
 
+    /**
+     * Update User
+     * @param id Long
+     * @param user User
+     * @return USer
+     */
     public UserDTO updateUser(Long id,User user){
-        // TODO CREATE A CUSTOM EXCEPTION TO HANDLE DATA NOT FOUND
-        //TODO DO SOMETHING ABOUT THE IF STATEMENTS
+
             User user1=this.userRepository.findById(id).orElse(new User());
 
         if (user.getRoles()!=null){
@@ -69,12 +85,23 @@ public class UserService {
     }
 
 
+    /**
+     * Delete User
+     *
+     * @param id Long
+     */
     public void deleteUser(Long id){
         User user=this.userRepository.findById(id).orElse(new User());
         this.userRepository.delete(user);
     }
 
 
+    /**
+     * Find User
+     *
+     * @param id User
+     * @return User
+     */
     public UserDTO findUserById(Long id) {
         User user=this.userRepository.findById(id)
                 .orElse(new User());

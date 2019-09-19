@@ -28,7 +28,7 @@ public class AuthUserController {
      *
      * @return Authenticated User
      */
-    @GetMapping(path = "auth/user",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(path = "/auth/user",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public UserDTO index(Authentication auth){
         return this.auth.findUserByName(auth.getName());

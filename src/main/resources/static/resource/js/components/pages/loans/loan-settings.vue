@@ -22,12 +22,12 @@
 
 <script>
     import LoanProduct from './loan-products'
-    import LoanFee from './loan-fees'
+
 export default {
     name:"loansettings",
     components:{
         LoanProduct,
-        LoanFee
+
     }
 
 }

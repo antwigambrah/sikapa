@@ -25,13 +25,14 @@ public class LoanService {
     private final UserRepository user;
     private final LoanProductRepository product;
     private final LoanMapper mapper;
-
+    private  final AwsS3ServiceImp awsS3ServiceImp;
     @Autowired
-    public LoanService(LoanRepository loan, UserRepository user, LoanProductRepository product, LoanMapper mapper) {
+    public LoanService(LoanRepository loan, UserRepository user, LoanProductRepository product, LoanMapper mapper, AwsS3ServiceImp awsS3ServiceImp) {
         this.loan = loan;
         this.user = user;
         this.product = product;
         this.mapper = mapper;
+        this.awsS3ServiceImp = awsS3ServiceImp;
     }
 
     /**
@@ -50,7 +51,7 @@ public class LoanService {
      * @param auth Authentication
      */
     public LoanDTO createLoan(Loan loan, Authentication auth){
-
+        String file=this.awsS3ServiceImp.upload(loan.getDocuments());
         LocalDate startDate= LocalDate.parse(loan.getStartDate().toString());
         LocalDate endDate =LocalDate.parse(loan.getEndDate().toString());
 
@@ -60,8 +61,31 @@ public class LoanService {
           loan.setProduct(product);
           loan.setStartDate(startDate);
           loan.setEndDate(endDate);
+          loan.setDocuments(file);
           return this.mapper.toLoanDTO(this.loan.save(loan));
     }
 
+    /**
+     * Find Loan
+     *
+     * @param id Long
+     * @return Loan
+     */
+    public LoanDTO findLoan(Long id){
+        return this.mapper.toLoanDTO(this.loan.findById(id).orElse(new Loan()));
+    }
+
+    /**
+     * Update Loan
+     * @param id Long
+     * @param loan Loan
+     * @return Loan
+     */
+    public LoanDTO updateLoan(Long id,Loan loan){
+        Loan loan1=this.loan.findById(id).orElse(new Loan());
+        loan1.setStatus(loan.getStatus());
+        this.loan.save(loan1);
+        return  this.mapper.toLoanDTO(loan1);
+    }
 
 }

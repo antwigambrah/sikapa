@@ -30,7 +30,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("prod")
+@ActiveProfiles("dev")
 public class UserControllerTests {
 
     private MockMvc mockMvc;

@@ -14,6 +14,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -91,8 +92,10 @@ public class Loan {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private  User user;
 
+    @Column(nullable = false)
+    private String documents;
 
-    public Loan(double amount, LocalDate startDate, LocalDate endDate,String sourceOfIncome,String accountNumber, String collateral, Product product, double commitmentFee,User user,double insurancePremium,LoanStatus status,String comments,String purpose,String clientName,String clientPhoneNumber) {
+    public Loan(double amount, LocalDate startDate, LocalDate endDate,String sourceOfIncome,String accountNumber, String collateral, Product product, double commitmentFee,User user,double insurancePremium,LoanStatus status,String comments,String purpose,String clientName,String clientPhoneNumber,String documents) {
         this.amount = amount;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -108,12 +111,14 @@ public class Loan {
         this.clientName=clientName;
         this.clientPhoneNumber=clientPhoneNumber;
         this.accountNumber=accountNumber;
+        this.documents=documents;
     }
 
     public  Loan(){
 
 
     }
+
 
 
 }
