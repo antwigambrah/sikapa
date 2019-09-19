@@ -38,5 +38,5 @@ mvnw
 webpack.mix.js
 package-lock.json
 Vagranfile
-src/main/resources/application-dev.properties
-src/main/resources/application-test.properties
+/src/main/resources/application-dev.properties
+/src/main/resources/application-test.properties
