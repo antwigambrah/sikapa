@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 @Service
-public class AwsS3ServiceImp extends FileUploadService {
+public class AwsS3Service extends FileUploadService {
 
 
     private final AmazonS3 amazonS3;
@@ -19,7 +19,7 @@ public class AwsS3ServiceImp extends FileUploadService {
     @Value("${aws.s3.bucket.name}")
     private String bucketName;
 
-    public  AwsS3ServiceImp(AmazonS3 amazonS3){
+    public  AwsS3Service(AmazonS3 amazonS3){
         this.amazonS3=amazonS3;
     }
 

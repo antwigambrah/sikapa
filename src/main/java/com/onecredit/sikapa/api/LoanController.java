@@ -5,7 +5,7 @@ import com.onecredit.sikapa.domain.dto.LoanDTO;
 import com.onecredit.sikapa.domain.dto.UserDTO;
 import com.onecredit.sikapa.domain.entities.Loan;
 import com.onecredit.sikapa.domain.entities.User;
-import com.onecredit.sikapa.domain.services.AwsS3ServiceImp;
+import com.onecredit.sikapa.domain.services.AwsS3Service;
 import com.onecredit.sikapa.domain.services.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,10 +21,10 @@ public class LoanController {
 
     private LoanService loans;
 
-    private AwsS3ServiceImp s3ServiceImp;
+    private AwsS3Service s3ServiceImp;
 
     @Autowired
-    public LoanController(LoanService loans, AwsS3ServiceImp s3ServiceImp) {
+    public LoanController(LoanService loans, AwsS3Service s3ServiceImp) {
         this.loans = loans;
         this.s3ServiceImp = s3ServiceImp;
     }

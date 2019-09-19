@@ -25,9 +25,9 @@ public class LoanService {
     private final UserRepository user;
     private final LoanProductRepository product;
     private final LoanMapper mapper;
-    private  final AwsS3ServiceImp awsS3ServiceImp;
+    private  final AwsS3Service awsS3ServiceImp;
     @Autowired
-    public LoanService(LoanRepository loan, UserRepository user, LoanProductRepository product, LoanMapper mapper, AwsS3ServiceImp awsS3ServiceImp) {
+    public LoanService(LoanRepository loan, UserRepository user, LoanProductRepository product, LoanMapper mapper, AwsS3Service awsS3ServiceImp) {
         this.loan = loan;
         this.user = user;
         this.product = product;

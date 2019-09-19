@@ -16,10 +16,10 @@ public class GuarantorService {
 
     private final GuarantorRepository guarantors;
     private  final LoanRepository loans;
-    private final AwsS3ServiceImp awsS3ServiceImp;
+    private final AwsS3Service awsS3ServiceImp;
 
     @Autowired
-    public GuarantorService(GuarantorRepository guarantors, LoanRepository loans, AwsS3ServiceImp awsS3ServiceImp){
+    public GuarantorService(GuarantorRepository guarantors, LoanRepository loans, AwsS3Service awsS3ServiceImp){
         this.guarantors = guarantors;
         this.loans = loans;
         this.awsS3ServiceImp = awsS3ServiceImp;
