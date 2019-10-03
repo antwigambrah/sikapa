@@ -1,1 +1,1 @@
-alter table loan add column documents varchar(255) not null
+alter table loan add column documents varchar(255)  null
