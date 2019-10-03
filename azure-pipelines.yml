@@ -13,7 +13,7 @@ pool:
 
 
 variables:
- DB_URL: 'mysql://b2d543779dc447:5bf2847f@us-cdbr-iron-east-05.cleardb.net/heroku_5f03f2220ed2023?reconnect=true'
+ DB_URL: 'jdbc:mysql://bc91835cb3fd6a:04c96dde@us-cdbr-iron-east-05.cleardb.net/heroku_009e6d889ca59be?reconnect=true'
 steps:
   - task: Maven@3
     inputs:
