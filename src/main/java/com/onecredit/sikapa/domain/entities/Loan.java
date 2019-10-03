@@ -92,7 +92,7 @@ public class Loan {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private  User user;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String documents;
 
     public Loan(double amount, LocalDate startDate, LocalDate endDate,String sourceOfIncome,String accountNumber, String collateral, Product product, double commitmentFee,User user,double insurancePremium,LoanStatus status,String comments,String purpose,String clientName,String clientPhoneNumber,String documents) {

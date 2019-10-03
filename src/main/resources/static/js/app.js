@@ -90984,7 +90984,11 @@ var render = function() {
         "div",
         [
           _c("b-form-file", {
-            attrs: { multiple: "", "file-name-formatter": _vm.getFiles }
+            attrs: {
+              multiple: "",
+              "file-name-formatter": _vm.getFiles,
+              disabled: true
+            }
           })
         ],
         1

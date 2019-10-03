@@ -51,7 +51,7 @@ public class LoanService {
      * @param auth Authentication
      */
     public LoanDTO createLoan(Loan loan, Authentication auth){
-        String file=this.awsS3ServiceImp.upload(loan.getDocuments());
+//        String file=this.awsS3ServiceImp.upload(loan.getDocuments());
         LocalDate startDate= LocalDate.parse(loan.getStartDate().toString());
         LocalDate endDate =LocalDate.parse(loan.getEndDate().toString());
 
@@ -61,7 +61,7 @@ public class LoanService {
           loan.setProduct(product);
           loan.setStartDate(startDate);
           loan.setEndDate(endDate);
-          loan.setDocuments(file);
+//          loan.setDocuments(file);
           return this.mapper.toLoanDTO(this.loan.save(loan));
     }
 

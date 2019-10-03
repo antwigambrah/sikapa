@@ -13,7 +13,7 @@ pool:
 
 
 variables:
- DB_URL: 'jdbc:mysql://sikapa.ckxr5p78bysg.us-west-2.rds.amazonaws.com/onecredit'
+ DB_URL: 'mysql://b2d543779dc447:5bf2847f@us-cdbr-iron-east-05.cleardb.net/heroku_5f03f2220ed2023?reconnect=true'
 steps:
   - task: Maven@3
     inputs:

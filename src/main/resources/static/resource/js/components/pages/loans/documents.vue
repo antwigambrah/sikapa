@@ -6,7 +6,7 @@
             <div class="col-8">
                 <label class="form-label">Choose</label>
                 <div>
-                    <b-form-file multiple :file-name-formatter="getFiles"></b-form-file>
+                    <b-form-file multiple :file-name-formatter="getFiles" :disabled="true"></b-form-file>
 
 
                 </div>
