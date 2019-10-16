@@ -11,7 +11,3 @@ A simple loan management platform built to streamline loan applications
 * Java/Spring Boot
 * Javascript/Vuejs
 * Mysql
-
-
-## ! Note 
-This system is being made for internal use at a bank pertaining to a specific use case.Thank you.
